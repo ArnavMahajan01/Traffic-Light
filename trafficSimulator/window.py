@@ -126,20 +126,6 @@ class Window:
             color
         )
 
-    def rect(self, pos, size, color):
-        """Draws a rectangle."""
-        gfxdraw.rectangle(self.screen, (*pos, *size), color)
-
-    def box(self, pos, size, color):
-        """Draws a rectangle."""
-        gfxdraw.box(self.screen, (*pos, *size), color)
-
-    def circle(self, pos, radius, color, filled=True):
-        gfxdraw.aacircle(self.screen, *pos, radius, color)
-        if filled:
-            gfxdraw.filled_circle(self.screen, *pos, radius, color)
-
-
 
     def polygon(self, vertices, color, filled=True):
         gfxdraw.aapolygon(self.screen, vertices, color)
@@ -170,8 +156,6 @@ class Window:
 
         self.polygon(vertices, color, filled=filled)
 
-    def rotated_rect(self, pos, size, angle=None, cos=None, sin=None, centered=True, color=(0, 0, 255)):
-        self.rotated_box(pos, size, angle=angle, cos=cos, sin=sin, centered=centered, color=color, filled=False)
 
     def arrow(self, pos, size, angle=None, cos=None, sin=None, color=(150, 150, 190)):
         if angle:
@@ -240,7 +224,7 @@ class Window:
                 (road.length, 3.7),
                 cos=road.angle_cos,
                 sin=road.angle_sin,
-                color=(180, 180, 220),
+                color=(179, 255, 179),
                 centered=False
             )
             # Draw road lines
