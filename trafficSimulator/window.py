@@ -126,6 +126,14 @@ class Window:
             color
         )
 
+    def rect(self, pos, size, color):
+        """Draws a rectangle."""
+        gfxdraw.rectangle(self.screen, (*pos, *size), color)
+
+    def box(self, pos, size, color):
+        """Draws a rectangle."""
+        gfxdraw.box(self.screen, (*pos, *size), color)
+
     def circle(self, pos, radius, color, filled=True):
         gfxdraw.aacircle(self.screen, *pos, radius, color)
         if filled:
@@ -162,7 +170,6 @@ class Window:
     
     def rotated_rect(self, pos, size, angle=None, cos=None, sin=None, centered=True, color=(0, 0, 255)):
         self.rotated_box(pos, size, angle=angle, cos=cos, sin=sin, centered=centered, color=color, filled=False)
-
 
     def arrow(self, pos, size, angle=None, cos=None, sin=None, color=(150, 150, 190)):
         if angle:
