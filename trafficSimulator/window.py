@@ -167,7 +167,7 @@ class Window:
             )
 
         self.polygon(vertices, color, filled=filled)
-    
+
     def rotated_rect(self, pos, size, angle=None, cos=None, sin=None, centered=True, color=(0, 0, 255)):
         self.rotated_box(pos, size, angle=angle, cos=cos, sin=sin, centered=centered, color=color, filled=False)
 
@@ -270,6 +270,21 @@ class Window:
 
             # TODO: Draw road arrow
 
+    def draw_vehicle(self, vehicle, road):
+        l, h = vehicle.l,  2
+        sin, cos = road.angle_sin, road.angle_cos
+
+        x = road.start[0] + cos * vehicle.x 
+        y = road.start[1] + sin * vehicle.x 
+
+        self.rotated_box((x, y), (l, h), cos=cos, sin=sin, centered=True)
+
+    def draw_vehicles(self):
+        for road in self.sim.roads:
+            # Draw vehicles
+            for vehicle in road.vehicles:
+                self.draw_vehicle(vehicle, road)
+
     def draw_signals(self):
         for signal in self.sim.traffic_signals:
             for i in range(len(signal.roads)):
@@ -299,12 +314,14 @@ class Window:
         self.background(*self.bg_color)
 
         # Major and minor grid and axes
-        self.draw_grid(10, (220,220,220))
-        self.draw_grid(100, (200,200,200))
-        self.draw_axes()
+        # self.draw_grid(10, (220,220,220))
+        # self.draw_grid(100, (200,200,200))
+        # self.draw_axes()
 
-        # Draw roads
         self.draw_roads()
+        self.draw_vehicles()
+        self.draw_signals()
 
         # Draw status info
         self.draw_status()
+        
