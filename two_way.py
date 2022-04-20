@@ -97,22 +97,22 @@ def road(a): return range(a, a+n)
 
 
 sim.create_gen({
-    'vehicle_rate': 30,
+    'vehicle_rate': 20,
     'vehicles': [
-        [3, {'path': [0, 8, 6]}],
+        [1, {'path': [0, 8, 6]}],
         [1, {'path': [0, *road(12), 5]}],
         [1, {'path': [0, *road(12+n), 7]}],
 
-        [3, {'path': [1, 9, 7]}],
+        [1, {'path': [1, 9, 7]}],
         [1, {'path': [1, *road(12+2*n), 6]}],
         [1, {'path': [1, *road(12+3*n), 4]}],
 
 
-        [3, {'path': [2, 10, 4]}],
+        [1, {'path': [2, 10, 4]}],
         [1, {'path': [2, *road(12+4*n), 7]}],
         [1, {'path': [2, *road(12+5*n), 5]}],
 
-        [3, {'path': [3, 11, 5]}],
+        [1, {'path': [3, 11, 5]}],
         [1, {'path': [3, *road(12+6*n), 4]}],
         [1, {'path': [3, *road(12+7*n), 6]}]
     ]})
@@ -123,4 +123,4 @@ sim.create_signal([[0, 2], [1, 3]])
 # Start simulation
 win = Window(sim)
 win.zoom = 10
-win.run(steps_per_update=10)
+win.run(steps_per_update=5)

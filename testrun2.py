@@ -3,15 +3,28 @@ from trafficSimulator import *
 # Create simulation
 sim = Simulation()
 
-# Add one road
-sim.create_road((300, 98), (0, 98))
-sim.create_road((0, 102), (300, 102))
-sim.create_road((200, 0), (200, 200))
-sim.create_road((204, 200), (204, 00))
-sim.create_road((100, 0), (100, 200))
-sim.create_road((104, 200), (104, 00))
+# Add multiple roads
+sim.create_roads([
+    ((0, 100), (148, 100)),
+    ((148, 100), (300, 100)),
 
+    ((150, 0), (150, 98)),
+    ((150, 98), (150, 200)),
+])
+
+sim.create_gen({
+    'vehicle_rate': 20,
+    'vehicles': [
+        [1, {"path": [0, 1]}],
+        [1, {"path": [0, 3]}],
+        [1, {"path": [2, 3]}],
+        [1, {"path": [2, 3]}]
+    ]
+})
+
+sim.create_signal([[0], [2]])
 
 # Start simulation
 win = Window(sim)
-win.loop()
+win.offset = (-150, -110)
+win.run(steps_per_update=5)

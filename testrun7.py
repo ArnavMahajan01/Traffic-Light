@@ -15,7 +15,7 @@ sim.create_roads([
     ((0, 178), (300, 178)),
     ((300, 182), (0, 182)),
     ((160, 102), (155, 180))
-    
+
 ])
 
 sim.create_gen({
@@ -28,6 +28,8 @@ sim.create_gen({
         [1, {"path": [7]}]
     ]
 })
+
+#sim.create_signal([[0, 2], [1, 3]])
 
 # Start simulation
 win = Window(sim)
